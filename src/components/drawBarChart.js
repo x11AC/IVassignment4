@@ -33,6 +33,19 @@ export let drawBarChart = (barChartLayer, data, xScale, yScale, barChartWidth, b
       point.attr('r', 10)
            .style('fill', 'red')
            .raise();
+
+      const scatterPlotLayer = d3.select("#scatter-plot");
+      scatterPlotLayer.append("rect")
+          .attr("class", "highlight-rect")
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("width", 545) // scatterPlotWidth = innerWidth
+          .attr("height", 360) // scatterPlotHeight = innerHeightScatter
+          .style("fill", "yellow")
+          .style("opacity", 0.5)
+          .style("pointer-events", "none")
+          .lower();
+    })
     })
     // Task 7: Mouseout event
     .on('mouseout', (event, d) => {
@@ -42,6 +55,8 @@ export let drawBarChart = (barChartLayer, data, xScale, yScale, barChartWidth, b
       const point = d3.select(`.point.${stationClass}`);
       point.attr('r', 5)
            .style('fill', 'steelblue');
+      const scatterPlotLayer = d3.select("#scatter-plot")
+      scatterPlotLayer.select(".highlight-rect").remove();
     });
 };
 

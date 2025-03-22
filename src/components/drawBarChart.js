@@ -46,7 +46,6 @@ export let drawBarChart = (barChartLayer, data, xScale, yScale, barChartWidth, b
           .style("pointer-events", "none")
           .lower();
     })
-    })
     // Task 7: Mouseout event
     .on('mouseout', (event, d) => {
       d3.select(event.target).style('fill', 'steelblue');
